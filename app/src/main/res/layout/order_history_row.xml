@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="10dp"
+    android:background="@color/peach">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_flavor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/peach">
+        <ImageView
+            android:id="@+id/img_item_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintTop_toBottomOf="@id/titleflavortv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/img_view"/>
+
+        <TextView
+            android:id="@+id/titleflavortv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order ID: "
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="15dp"
+            android:textColor="@color/brown"/>
+
+        <TextView
+            android:id="@+id/orderdatetv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order Date: "
+            android:textSize="15sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/orderflavortv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/brown"
+            android:text="Flavour: "
+            android:textSize="15sp"
+            app:layout_constraintTop_toTopOf="@id/img_item_main"
+            app:layout_constraintStart_toEndOf="@id/img_item_main"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:id="@+id/orderfillingtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fillings: "
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@id/orderflavortv"
+            app:layout_constraintStart_toStartOf="@id/orderflavortv"/>
+
+        <TextView
+            android:id="@+id/ordertoppingtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Toppings: "
+            app:layout_constraintTop_toBottomOf="@id/orderfillingtv"
+            app:layout_constraintStart_toStartOf="@id/orderfillingtv"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/ordersizetv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Size: "
+            app:layout_constraintStart_toStartOf="@id/ordertoppingtv"
+            app:layout_constraintTop_toBottomOf="@id/ordertoppingtv"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/historyqtytv"
+            android:textSize="15sp"
+            android:text="Quantity: "
+            app:layout_constraintStart_toStartOf="@id/ordersizetv"
+            app:layout_constraintTop_toBottomOf="@id/ordersizetv"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

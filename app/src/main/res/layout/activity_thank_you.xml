@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/brown">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/inside_view" >
+
+        <TextView
+            android:id="@+id/profilenameet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="We Got Your Order"
+            android:textStyle="bold"
+            android:textSize="36sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:textColor="@color/brown"/>
+
+        <TextView
+            android:id="@+id/profilecontactet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="Thank you for using our service"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/profilenameet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:textColor="@color/another_light_brown"/>
+
+        <TextView
+            android:id="@+id/tqorderidtv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="Your Latest Order ID: "
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/profilecontactet"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:backgroundTint="@color/another_light_brown"/>
+
+
+        <TextView
+            android:id="@+id/tqorderdatetv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="10dp"
+            android:text="Order Date: "
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/tqorderidtv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center"
+            android:backgroundTint="@color/another_light_brown"/>
+        <Button
+            android:id="@+id/itembtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg"
+            android:text="Back to Item"
+            android:textColor="@color/not_so_white_for_txt"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif"
+            app:layout_constraintTop_toBottomOf="@id/tqorderidtv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="10dp"/>
+        <Button
+            android:id="@+id/orderhistorybtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg"
+            android:text="Back to Order History"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/not_so_white_for_txt"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/itembtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="10dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

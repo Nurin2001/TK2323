@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckOut"
+    android:background="@color/brown">
+
+    <Toolbar
+        android:id="@+id/checkouttoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="Check Out"
+        android:titleTextColor="@color/not_so_white_for_txt"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="640dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/inside_view"
+        android:paddingTop="17dp">
+
+        <ScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ll_paymethod"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="50dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    app:cardCornerRadius="20dp" android:layout_margin="10dp"
+                    android:background="@color/peach">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_addr"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/peach">
+
+                        <TextView
+                            android:id="@+id/addtitletv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:textSize="20sp"
+                            android:text="Delivery address:"
+                            android:layout_margin="10dp"/>
+                        <TextView
+                            android:id="@+id/addrtv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/addtitletv"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:text="your addr"
+                            android:textSize="18sp"
+                            android:layout_marginStart="20dp"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    app:cardCornerRadius="20dp" android:layout_margin="10dp"
+                    android:background="@color/peach">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/peach">
+
+                        <TextView
+                            android:id="@+id/yourordertv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:text="Your Order"
+                            android:layout_margin="10dp"
+                            android:textSize="19sp"/>
+                        <ImageView
+                            android:id="@+id/imgorder"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_launcher_background"
+                            app:layout_constraintTop_toBottomOf="@id/yourordertv"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            android:background="@drawable/img_view"
+                            android:layout_marginStart="20dp"/>
+
+                        <TableLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintStart_toEndOf="@id/imgorder"
+                            app:layout_constraintTop_toTopOf="@id/imgorder"
+                            android:layout_marginStart="30dp"
+                            android:padding="5dp">
+
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" >
+
+                                <TextView
+                                    android:id="@+id/fillingstitletv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Fillings: " />
+
+                                <TextView
+                                    android:id="@+id/fillingstv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="fillings" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" >
+                                <TextView
+                                    android:id="@+id/flavortitletv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Flavour: " />
+
+                                <TextView
+                                    android:id="@+id/flavortv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="flavor" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" >
+                            <TextView
+                                android:id="@+id/toptitletv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Toppings:" />
+                            <TextView
+                                android:id="@+id/toptv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="topping" />
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" >
+                                <TextView
+                                    android:id="@+id/sizetitletv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Size:" />
+                                <TextView
+                                    android:id="@+id/sizetv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="size" />
+
+                            </TableRow>
+
+                            <TableRow
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" >
+                            <TextView
+                                android:id="@+id/qtytitletv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Quantity:" />
+                            <TextView
+                                android:id="@+id/qtytv"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="qty" /></TableRow>
+                        </TableLayout>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="20dp" android:layout_margin="10dp"
+                    android:background="@color/peach">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_delmethod"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/peach">
+
+                        <TextView
+                            android:id="@+id/delmethodtitletv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:textSize="20sp"
+                            android:text="Delivery method:"
+                            android:layout_margin="10dp"/>
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/delmethodtitletv"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/inside_view"
+                                app:cardCornerRadius="40dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <RadioButton
+                                        android:id="@+id/jntradbtn"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="JNT"
+                                        android:checked="true"
+                                        android:layout_weight="1"/>
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="RM5.00"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:layout_marginEnd="10dp"/>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/inside_view"
+                                app:cardCornerRadius="40dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <RadioButton
+                                        android:id="@+id/poslajuradbtn"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Poslaju"
+                                        android:layout_weight="1"/>
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="RM6.00"
+                                        android:layout_weight="1"
+                                        android:gravity="end"
+                                        android:layout_marginEnd="10dp"/>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                        </RadioGroup>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="20dp" android:layout_margin="10dp"
+                    android:background="@color/peach">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/layout_paymethod"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/peach">
+
+                        <TextView
+                            android:id="@+id/paymethodtitletv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:textSize="20sp"
+                            android:text="Payment method:"
+                            android:layout_margin="10dp"/>
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/paymethodtitletv"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent">
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/inside_view"
+                                app:cardCornerRadius="40dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <RadioButton
+                                        android:id="@+id/codradbtn"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Cash on Delivery"
+                                        android:checked="true"
+                                        android:layout_weight="1"/>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginTop="2dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/inside_view"
+                                app:cardCornerRadius="40dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+                                    <RadioButton
+                                        android:id="@+id/onlineradbtn"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="Online Banking"
+                                        android:layout_weight="1"/>
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                        </RadioGroup>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </ScrollView>
+        <LinearLayout
+            android:id="@+id/ll_paymethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/kind_of_yellow"
+            android:gravity="end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total payment"/>
+                <TextView
+                    android:id="@+id/totalpricetv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RMXX.XX"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/confirmbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm Order"
+                android:textColor="@color/not_so_white_for_txt"
+                android:textSize="12sp"
+                android:background="@drawable/button_bg"
+                android:padding="10dp"
+                android:textAllCaps="false"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"/>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
