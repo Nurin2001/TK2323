@@ -10,7 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:title="Your Profile"
-        android:titleTextColor="@color/not_so_white_for_txt"/>
+        android:titleTextColor="@color/not_so_white_for_txt"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -21,7 +24,7 @@
         android:background="@drawable/inside_view" >
 
         <TextView
-            android:id="@+id/profilenameet"
+            android:id="@+id/profilenameET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
@@ -36,7 +39,7 @@
             android:background="@drawable/profile_view_txt"/>
 
         <TextView
-            android:id="@+id/profilecontactet"
+            android:id="@+id/profilecontactET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
@@ -45,13 +48,13 @@
             android:layout_marginEnd="10dp"
             android:text="Contact"
             android:textSize="22sp"
-            app:layout_constraintTop_toBottomOf="@id/profilenameet"
+            app:layout_constraintTop_toBottomOf="@id/profilenameET"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/profile_view_txt"/>
 
         <TextView
-            android:id="@+id/tqorderidtv"
+            android:id="@+id/profileaddrTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
@@ -60,13 +63,13 @@
             android:layout_marginEnd="10dp"
             android:text="Address"
             android:textSize="22sp"
-            app:layout_constraintTop_toBottomOf="@id/profilecontactet"
+            app:layout_constraintTop_toBottomOf="@id/profilecontactET"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/profile_view_txt"/>
 
         <Button
-            android:id="@+id/savebtn"
+            android:id="@+id/editBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/button_bg"
@@ -74,7 +77,7 @@
             android:textColor="@color/not_so_white_for_txt"
             android:textAllCaps="false"
             android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/tqorderidtv"
+            app:layout_constraintTop_toBottomOf="@id/profileaddrTV"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="80dp"

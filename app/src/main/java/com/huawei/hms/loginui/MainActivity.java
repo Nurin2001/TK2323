@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch (id) {
                     case  R.id.nav_profile:
+                        startActivity(new Intent(MainActivity.this, viewProfile.class));
                         Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
                         break;
                     case  R.id.nav_about:
