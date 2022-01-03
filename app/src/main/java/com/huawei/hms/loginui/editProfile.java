@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -47,7 +48,7 @@ public class editProfile extends AppCompatActivity {
 
             }
         });
-        alert.create();
+        alert.create().show();
 
     }
 
@@ -56,12 +57,31 @@ public class editProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        Toolbar toolbar = findViewById(R.id.editprofiletoolbar);
-        setSupportActionBar(toolbar);
+        MaterialToolbar toolbar = findViewById(R.id.editprofiletoolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //startActivity(new Intent(editProfile.this, viewProfile.class));
+                AlertDialog.Builder alert = new AlertDialog.Builder(editProfile.this);
+                alert.setTitle("Back to View Profile").setMessage("Are you sure you want to go back without saving?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                onStop();
+                                Intent intent = new Intent(editProfile.this, viewProfile.class);
+                                startActivity(intent);
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
-        getSupportActionBar();
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true); //keluar back button kat toolbar
+                    }
+                });
+                alert.create().show();
+            }
+        });
+
+
 
         Intent intent = getIntent();
         name = intent.getStringExtra("name");

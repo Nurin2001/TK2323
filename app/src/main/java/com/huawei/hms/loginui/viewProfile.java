@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.net.Inet4Address;
 import java.util.List;
 
 public class viewProfile extends AppCompatActivity {
@@ -32,6 +34,15 @@ public class viewProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
+
+        MaterialToolbar toolbar = findViewById(R.id.viewprofiletoolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onStop();
+                startActivity(new Intent(viewProfile.this, MainActivity.class));
+            }
+        });
 
         editbtn = findViewById(R.id.editBtn);
         nametv = findViewById(R.id.profilenameET);
@@ -69,6 +80,7 @@ public class viewProfile extends AppCompatActivity {
         editbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onPause();
                 Intent intent = new Intent(viewProfile.this, editProfile.class);
                 intent.putExtra("name", name);
                 intent.putExtra("contact", contact);

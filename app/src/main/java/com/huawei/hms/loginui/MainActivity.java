@@ -52,10 +52,12 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
                         break;
                     case  R.id.nav_about:
+                        startActivity(new Intent(MainActivity.this, AboutUs.class));
                         Toast.makeText(MainActivity.this, "About", Toast.LENGTH_SHORT).show();
                         break;
                     case  R.id.nav_contact:
                         Toast.makeText(MainActivity.this, "Contact", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MainActivity.this, ContactUs.class));
                         break;
                     case  R.id.nav_logout:
 

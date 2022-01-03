@@ -5,15 +5,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/brown">
 
-    <Toolbar
-        android:id="@+id/editprofiletoolbar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="Edit Profile"
-        android:titleTextColor="@color/not_so_white_for_txt"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/editprofiletoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Edit Profile"
+            app:titleTextColor="@color/not_so_white_for_txt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            android:background="@color/brown"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
