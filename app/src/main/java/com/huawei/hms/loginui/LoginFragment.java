@@ -50,6 +50,16 @@ public class LoginFragment extends Fragment {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        //if someone already logged in
+        if(firebaseAuth.getCurrentUser()!=null) {
+            String email="";
+            email = emailET.getText().toString().trim();
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            intent.putExtra("UID", emailET.getText());
+            startActivity(intent);
+            onDestroyView();
+        }
+
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +83,9 @@ public class LoginFragment extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if(task.isSuccessful()){
-                                    startActivity(new Intent(getActivity(), MainActivity.class));
+                                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                                    intent.putExtra("UID", firebaseAuth.getCurrentUser().getUid());
+                                    startActivity(intent);
                                     onDestroy();
                                 }
                                 else {
