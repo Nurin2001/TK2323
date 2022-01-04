@@ -5,6 +5,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,20 +19,38 @@ import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     Button logoutbtn;
     private FirebaseAuth firebaseAuth;
+   // LinearLayoutManager linearLayoutManager;
+    ViewPager viewPager;
+    TabLayout tabLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        viewPager = findViewById(R.id.viewpagermain);
 
+
+        tabLayout=findViewById(R.id.tabLayoutmain);
+        //viewPager.setAdapter(recyclerView);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.addTab(tabLayout.newTab().setText("Menu"));
+        tabLayout.addTab(tabLayout.newTab().setText("Order History"));
+        setUpTablayout();
+        setUpViewpager(viewPager);
         firebaseAuth = FirebaseAuth.getInstance();
+
 
         MaterialToolbar toolbar = findViewById(R.id.topbar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
@@ -106,5 +127,19 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, login.class));
             finish();
         }
+
     }
+    public void setUpViewpager(ViewPager viewpager) {
+        LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), MainActivity.this, 1);
+        adapter.addFrag(new MenuFragment(), "Menu");
+        //adapter.addFrag(new SignupFragment(), "Signup");
+
+        viewpager.setAdapter(adapter);
+    }
+
+    public void setUpTablayout() {
+
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
 }
