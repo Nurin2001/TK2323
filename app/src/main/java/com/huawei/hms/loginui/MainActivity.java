@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
+
                                         FirebaseAuth.getInstance().signOut();
                                         startActivity(new Intent(MainActivity.this, login.class));
                                         finish();

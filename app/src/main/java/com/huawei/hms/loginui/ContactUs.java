@@ -58,4 +58,9 @@ public class ContactUs extends AppCompatActivity {
         else
             Toast.makeText(ContactUs.this, "No app to support this action", Toast.LENGTH_SHORT).show();
     }
+    @Override
+    public void onBackPressed() {
+        onDestroy();
+        startActivity(new Intent(this, MainActivity.class));
+    }
 }
