@@ -12,26 +12,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LoginUI">
         <activity
+            android:name=".ContactUs"
+            android:exported="true" />
+        <activity
             android:name=".CheckOut"
             android:exported="true" />
         <activity
             android:name=".AboutUs"
-            android:exported="true" />
-
-        <activity
-            android:name=".ContactUs"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ThankYou"
             android:exported="true" />
         <activity
             android:name=".editProfile"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".viewProfile" />
         <activity
             android:name=".viewProfile"
-            android:exported="true" />
-
-
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

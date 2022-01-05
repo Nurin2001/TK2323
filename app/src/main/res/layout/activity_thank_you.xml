@@ -14,7 +14,7 @@
         android:background="@drawable/inside_view" >
 
         <TextView
-            android:id="@+id/profilenameet"
+            android:id="@+id/profilenameET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
@@ -30,7 +30,7 @@
             android:textColor="@color/brown"/>
 
         <TextView
-            android:id="@+id/profilecontactet"
+            android:id="@+id/profilecontactET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -38,7 +38,7 @@
             android:layout_marginEnd="10dp"
             android:text="Thank you for using our service"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/profilenameet"
+            app:layout_constraintTop_toBottomOf="@id/profilenameET"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center"
@@ -53,7 +53,7 @@
             android:layout_marginEnd="10dp"
             android:text="Your Latest Order ID: "
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/profilecontactet"
+            app:layout_constraintTop_toBottomOf="@id/profilecontactET"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:gravity="center"

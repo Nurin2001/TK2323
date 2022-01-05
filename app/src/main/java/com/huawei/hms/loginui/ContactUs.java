@@ -24,6 +24,7 @@ public class ContactUs extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onStop();
                 onDestroy();
                 startActivity(new Intent(ContactUs.this, MainActivity.class));
             }
