@@ -5,15 +5,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/brown">
 
-    <Toolbar
-        android:id="@+id/editprofiletoolbar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="Edit Profile"
-        android:titleTextColor="@color/not_so_white_for_txt"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/editprofiletoolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:title="Edit Profile"
+            app:titleTextColor="@color/not_so_white_for_txt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            android:background="@color/brown"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,7 +37,7 @@
         android:background="@drawable/inside_view" >
 
         <EditText
-            android:id="@+id/profilenameet"
+            android:id="@+id/profilenameET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
@@ -40,7 +52,7 @@
             android:background="@drawable/profile_view_txt"/>
 
         <EditText
-            android:id="@+id/profilecontactet"
+            android:id="@+id/profilecontactET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
@@ -49,13 +61,13 @@
             android:layout_marginEnd="10dp"
             android:hint="Contact"
             android:textSize="22sp"
-            app:layout_constraintTop_toBottomOf="@id/profilenameet"
+            app:layout_constraintTop_toBottomOf="@id/profilenameET"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/profile_view_txt"/>
 
         <EditText
-            android:id="@+id/tqorderidtv"
+            android:id="@+id/profileaddrET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
@@ -64,7 +76,7 @@
             android:layout_marginEnd="10dp"
             android:hint="Address"
             android:textSize="22sp"
-            app:layout_constraintTop_toBottomOf="@id/profilecontactet"
+            app:layout_constraintTop_toBottomOf="@id/profilecontactET"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/profile_view_txt"/>
@@ -78,7 +90,7 @@
             android:textColor="@color/not_so_white_for_txt"
             android:textAllCaps="false"
             android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/tqorderidtv"
+            app:layout_constraintTop_toBottomOf="@id/profileaddrET"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="80dp"
