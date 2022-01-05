@@ -33,7 +33,6 @@ public class editProfile extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        onDestroy();
         AlertDialog.Builder alert = new AlertDialog.Builder(editProfile.this);
         alert.setTitle("Back to View Profile").setMessage("Are you sure you want to go back without saving?")
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
