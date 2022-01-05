@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     @Override
     public void onBindViewHolder(@NonNull MenuAdapter.MenuViewHolder holder, int position) {
        holder.flavortv.setText(MenuList.get(position).getFlavour());
+       holder.imgflavor.setImageResource(MenuList.get(position).getImageflavor());
+
     }
 
     @Override
@@ -45,11 +48,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     public class MenuViewHolder extends RecyclerView.ViewHolder {
 
         public TextView flavortv;
+        public ImageView imgflavor;
 
         public MenuViewHolder(@NonNull View itemView) {
 
             super(itemView);
             flavortv=itemView.findViewById(R.id.flavortv);
+            imgflavor=itemView.findViewById(R.id.img_item_main);
 
         }
     }
