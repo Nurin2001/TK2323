@@ -1,8 +1,6 @@
 package com.huawei.hms.loginui;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,21 +17,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.material.appbar.MaterialToolbar;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.net.Inet4Address;
-import java.util.List;
 
 public class viewProfile extends AppCompatActivity {
 
@@ -53,7 +36,7 @@ public class viewProfile extends AppCompatActivity {
     }
 
     private void createThis() {
-        MaterialToolbar toolbar = findViewById(R.id.viewprofiletoolbar);
+        MaterialToolbar toolbar = findViewById(R.id.aboutustoolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
