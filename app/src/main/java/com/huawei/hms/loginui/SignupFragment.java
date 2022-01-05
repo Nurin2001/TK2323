@@ -18,8 +18,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupFragment extends Fragment {
 
@@ -28,8 +26,6 @@ public class SignupFragment extends Fragment {
     ProgressBar progressBar;
 
     FirebaseAuth firebaseAuth;
-    FirebaseDatabase db;
-    DatabaseReference ref;
 
     float v = 0;
 
@@ -51,9 +47,7 @@ public class SignupFragment extends Fragment {
 
         //if someone already logged in
         if(firebaseAuth.getCurrentUser()!=null) {
-            Intent intent = new Intent(getActivity(), MainActivity.class);
-            intent.putExtra("UID", firebaseAuth.getCurrentUser().getUid());
-            startActivity(intent);
+            startActivity(new Intent(getActivity(), MainActivity.class));
             onDestroyView();
         }
 
@@ -98,27 +92,8 @@ public class SignupFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                              UserDetail user = new UserDetail(name, addr, email, phone);
-
-                              db = FirebaseDatabase.getInstance("https://orderup-trio-default-rtdb.asia-southeast1.firebasedatabase.app/");
-                              ref = db.getReference("Users");
-                              ref.child(firebaseAuth.getCurrentUser().getUid()).setValue(user)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()) {
-                                        Toast.makeText(getActivity(), "User is registered.", Toast.LENGTH_SHORT).show();
-                                        //Toast.makeText(getActivity(), "User is register")
-                                    }
-                                    else
-                                        Toast.makeText(getActivity(), "User is not registered.", Toast.LENGTH_SHORT).show();
-
-                                }
-                            });
-
-                            Intent intent = new Intent(getActivity(), MainActivity.class);
-                            intent.putExtra("UID", firebaseAuth.getCurrentUser().getUid());
-                            startActivity(intent);
+                            Toast.makeText(getActivity(), "User is registered.", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getActivity(), MainActivity.class));
                         }
                         else {
                             Toast.makeText(getContext(), "Fail to register." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

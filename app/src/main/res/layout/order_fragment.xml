@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -27,100 +28,56 @@
         >
 
         <RadioGroup
+            android:id="@+id/rg1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <RadioButton
                 android:id="@+id/bubblericeradbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bubble Rice"
-                android:textSize="18sp"
-                android:textColor="@color/brown"
                 android:layout_marginRight="10dp"
-                android:checked="true"/>
+                android:checked="true"
+                android:text="Bubble Rice"
+                android:textColor="@color/brown"
+                android:textSize="18sp" />
+            <RadioButton
+                android:id="@+id/minicrunchradbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mini Crunch"
+                android:textColor="@color/brown"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"/>
 
         </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/minicrunchradbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mini Crunch"
-            android:textColor="@color/brown"
-            android:textSize="18sp"
-            android:layout_marginLeft="10dp"/>
+
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/flavorstv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ll_fill"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Flavour"
-        android:textSize="20sp"
-        android:layout_margin="10dp"
-        android:textColor="@color/black"/>
     <LinearLayout
         android:id="@+id/ll_flav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/flavorstv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:gravity="start"
-        >
-
-        <RadioGroup
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <RadioButton
-                android:id="@+id/chocradbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Chocolate"
-                android:textSize="18sp"
-                android:textColor="@color/brown"
-                android:layout_marginRight="10dp"
-                android:checked="true"/>
-
-        </RadioGroup>
-
-        <RadioButton
-            android:id="@+id/strawberryradbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Strawberry"
-            android:textColor="@color/brown"
-            android:textSize="18sp"
-            android:layout_marginLeft="10dp"/>
-
-        <RadioButton
-            android:id="@+id/butterscotchradbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Butterscotch"
-            android:textColor="@color/brown"
-            android:textSize="18sp" />
-
-    </LinearLayout>
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="106dp"/>
 
 
     <TextView
         android:id="@+id/toppingtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ll_flav"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Toppings"
-        android:textSize="20sp"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="10dp"
+        android:text="Toppings"
         android:textColor="@color/black"
-        />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_fill" />
     <LinearLayout
         android:id="@+id/ll_top"
         android:layout_width="match_parent"
@@ -133,37 +90,42 @@
         >
 
         <RadioGroup
+            android:id="@+id/rg3"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <RadioButton
                 android:id="@+id/cadburyradbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cadbury"
-                android:textSize="18sp"
-                android:textColor="@color/brown"
                 android:layout_marginRight="10dp"
-                android:checked="true"/>
+                android:checked="true"
+                android:text="Cadbury"
+                android:textColor="@color/brown"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/kitkatradbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kit Kat"
+                android:textColor="@color/brown"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"/>
+
+            <RadioButton
+                android:id="@+id/kinderradbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kinder Bueno"
+                android:textColor="@color/brown"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"/>
 
         </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/kitkatradbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kit Kat"
-            android:textColor="@color/brown"
-            android:textSize="20sp"
-            android:layout_marginLeft="10dp"/>
 
-        <RadioButton
-            android:id="@+id/kinderradbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kinder Bueno"
-            android:textColor="@color/brown"
-            android:textSize="18sp"
-            android:layout_marginLeft="10dp"/>
 
     </LinearLayout>
 
@@ -189,29 +151,105 @@
         >
 
         <RadioGroup
+            android:id="@+id/rg4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <RadioButton
                 android:id="@+id/gram3radbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="300 g"
-                android:textSize="18sp"
-                android:textColor="@color/brown"
                 android:layout_marginRight="10dp"
-                android:checked="true"/>
+                android:checked="true"
+                android:text="300 g"
+                android:textColor="@color/brown"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/gram5radbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="500 g"
+                android:textColor="@color/brown"
+                android:textSize="18sp"
+                android:layout_marginLeft="10dp"/>
 
         </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/gram5radbtn"
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_size">
+
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="500 g"
-            android:textColor="@color/brown"
-            android:textSize="18sp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_weight="1"
+            android:text="Quantity" />
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/qty_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:padding="3dp"
+            >
+            <ImageButton
+                android:id="@+id/cartaddbtn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add"
+                android:background="@color/white"/>
+            <TextView
+                android:id="@+id/tvquantitycart"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"/>
+            <ImageButton
+                android:id="@+id/cartminusbtn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_minus"
+                android:background="@color/white"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <Button
+            android:id="@+id/btnaddcart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:text="Add to Cart"
+            android:textAllCaps="false"
+            android:textColor="@color/not_so_white_for_txt" />
+
+        <Button
+            android:id="@+id/btnchkout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg"
+            android:text="Check Out"
+            android:textAllCaps="false"
+            android:textColor="@color/not_so_white_for_txt" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
