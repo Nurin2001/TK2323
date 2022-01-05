@@ -124,7 +124,7 @@ public class OrderFragment extends Fragment {
    }
    public void checkButton(View v){
        int radioId = radioGroup1.getCheckedRadioButtonId();
-       int radioId2 = radioGroup2.getCheckedRadioButtonId();
+       //int radioId2 = radioGroup2.getCheckedRadioButtonId();
        int radioId3 = radioGroup3.getCheckedRadioButtonId();
        int radioId4 = radioGroup4.getCheckedRadioButtonId();
        radioButtonG1= v.findViewById(radioId);
