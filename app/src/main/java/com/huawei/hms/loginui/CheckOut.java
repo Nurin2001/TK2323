@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ public class CheckOut extends AppCompatActivity {
     TextView pricetv, filligstv, flavortv, toppingtv, sizetv, addrtv, qtytv;
     Button confirmbtn;
     RadioGroup radgroupDelivery, radgroupPayment;
+    ImageView imageView;
 
     float price=0;
     int qty=0;
@@ -62,37 +64,36 @@ public class CheckOut extends AppCompatActivity {
         flavortv = findViewById(R.id.flavortv);
         sizetv = findViewById(R.id.sizetv);
         qtytv = findViewById(R.id.qtytv);
+        imageView = findViewById(R.id.imgorder);
 
         confirmbtn = findViewById(R.id.confirmbtn);
 
         dbref = FirebaseDatabase.getInstance("https://orderup-trio-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("Users");
-
         dbref.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                         UserDetail user = snapshot.getValue(UserDetail.class);
 
-                        String name="", contact="", addr="", email="";
-                        if(user != null) {
+                        String name = "", contact = "", addr = "", email = "";
+                        if (user != null) {
                             name = user.name;
                             contact = user.contact;
                             addr = user.addr;
                             email = user.email;
 
                             addrtv.setText(addr);
-
                         }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(CheckOut.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
-        Intent intent = getIntent();
+                Intent intent = getIntent();
         price = intent.getFloatExtra("total_price", 0);
         filling = intent.getStringExtra("fillings");
         flavor = intent.getStringExtra("flavor");
@@ -102,12 +103,20 @@ public class CheckOut extends AppCompatActivity {
 
         pricetv = findViewById(R.id.totalpricetv);
 
+        if (flavor.equals("Chocolate"))
+            imageView.setImageResource(R.drawable.chocolate_80);
+        if (flavor.equals("Strawberry"))
+            imageView.setImageResource(R.drawable.strawberry_80);
+        if (flavor.equals("Butterscotch"))
+            imageView.setImageResource(R.drawable.butterscotch);
         filligstv.setText(filling);
         flavortv.setText(flavor);
         toppingtv.setText(topping);
         sizetv.setText(size);
         qtytv.setText(""+qty);
         pricetv.setText("RM" + price*qty);
+
+
 
         radgroupDelivery.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -133,7 +142,7 @@ public class CheckOut extends AppCompatActivity {
 
                 }
                 else {
-                    Menu menu = new Menu(filling, flavor, topping, size);
+                    Menu menu = new Menu(filling, flavor, topping, size,qty);
                     dbref.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .child("OrderHistory").setValue(menu).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

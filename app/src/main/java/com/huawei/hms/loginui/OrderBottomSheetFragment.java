@@ -137,6 +137,7 @@ public class OrderBottomSheetFragment extends BottomSheetDialogFragment {
         switch (radBtnId) {
             case R.id.minicrunchradbtn:
                 gotoCheckoutIntent.putExtra("fillings", "Mini Crunch");
+
                 price[0] = 7;
                 break;
             case  R.id.bubblericeradbtn:
@@ -179,14 +180,17 @@ public class OrderBottomSheetFragment extends BottomSheetDialogFragment {
         switch (radBtnId) {
             case R.id.chocolateradbtn:
                 gotoCheckoutIntent.putExtra("flavor", "Chocolate");
+                gotoCheckoutIntent.putExtra("ImageFlavour", R.drawable.chocolate_80);
                 price[3] = 1;
                 break;
             case  R.id.strawberryradbtn:
                 gotoCheckoutIntent.putExtra("flavor", "Strawberry");
+                gotoCheckoutIntent.putExtra("ImageFlavour", R.drawable.strawberry_80);
                 price[3] = 1;
                 break;
             case  R.id.butterscotchradbtn:
                 gotoCheckoutIntent.putExtra("flavor", "Butterscotch");
+                gotoCheckoutIntent.putExtra("ImageFlavour", R.drawable.butterscotch);
                 price[3] = 2;
                 break;
         }

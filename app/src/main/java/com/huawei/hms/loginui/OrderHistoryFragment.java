@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,22 +13,82 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 public class OrderHistoryFragment extends Fragment {
-    RecyclerView recyclerView;
-    LinearLayoutManager linearLayoutManager;
+    DatabaseReference reference;
+
+    TextView tv_fillings,tv_flavour,tv_toppings,tv_size,tv_quantity;
+    ImageView imageView;
+
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.order_history_row,container,false);
-        recyclerView=root.findViewById(R.id.recyclerview2);
-        linearLayoutManager= new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        List<Menu> allMenuInfor = getOrderDetail();
-        MenuRecyclerViewAdapter menuRecyclerViewAdapter = new MenuRecyclerViewAdapter(allMenuInfor,getActivity());
-        recyclerView.setAdapter(menuRecyclerViewAdapter);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.orderhistory,container,false);
+        tv_fillings =  root.findViewById(R.id.tv_fillings);
+        tv_flavour = root.findViewById(R.id.tv_flavour);
+        tv_toppings = root.findViewById(R.id.tv_toppings);
+        tv_size = root.findViewById(R.id.tv_size);
+        tv_quantity = root.findViewById(R.id.tv_quantity);
+        imageView = root.findViewById(R.id.imageView);
+        reference = FirebaseDatabase.getInstance("https://orderup-trio-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
+        reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("OrderHistory")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String fillings = "",flavour = "" ,topping = "" ,size = "";
+                        int quantity =0;
+                        Menu menu = snapshot.getValue(Menu.class);
+
+                        if (menu != null){
+                            fillings = menu.fillings;
+                            flavour = menu.flavour;
+                            topping = menu.topping;
+                            size = menu.size;
+                            quantity = menu.quantity;
+                            if (flavour.equals("Chocolate"))
+                                imageView.setImageResource(R.drawable.chocolate_80);
+                            if (flavour.equals("Strawberry"))
+                                imageView.setImageResource(R.drawable.strawberry_80);
+                            if (flavour.equals("Butterscotch"))
+                                imageView.setImageResource(R.drawable.butterscotch);
+
+                            tv_fillings.setText("Fillings : " + fillings);
+                            tv_flavour.setText("Flavour : " +flavour);
+                            tv_toppings.setText("Toppings : " + topping);
+                            tv_size.setText("Size : " + size);
+                            tv_quantity.setText("Quantity : " + quantity);
+
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+        Calendar calendar = Calendar.getInstance();
+        String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
+
+        TextView tv_orderdate = root.findViewById(R.id.tv_orderdate);
+        tv_orderdate.setText("Order Date : " + currentDate);
+
+
+
         return root;
 
     }

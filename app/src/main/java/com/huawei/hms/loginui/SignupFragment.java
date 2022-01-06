@@ -116,7 +116,7 @@ public class SignupFragment extends Fragment {
                                 }
                             });
 
-                            Intent intent = new Intent(getActivity(), MainActivity.class);
+                            Intent intent = new Intent(getActivity(), MenuFragment.class);
                             intent.putExtra("UID", firebaseAuth.getCurrentUser().getUid());
                             startActivity(intent);
                         }

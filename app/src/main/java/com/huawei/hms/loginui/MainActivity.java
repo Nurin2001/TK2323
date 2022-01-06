@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(backPressedTime+2000 > System.currentTimeMillis()) {
             backtoast.cancel();
+            onDestroy();
             super.onBackPressed();
             return;
         }
@@ -154,9 +155,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void setUpViewpager(ViewPager viewpager) {
-        LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), MainActivity.this, 1);
+        LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), MainActivity.this, tabLayout.getTabCount());
         adapter.addFrag(new MenuFragment(), "Menu");
-        //adapter.addFrag(new SignupFragment(), "Signup");
+        adapter.addFrag(new OrderHistoryFragment(), "Order History");
 
         viewpager.setAdapter(adapter);
     }

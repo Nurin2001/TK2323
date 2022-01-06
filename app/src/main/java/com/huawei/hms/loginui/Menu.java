@@ -3,13 +3,18 @@ package com.huawei.hms.loginui;
 public class Menu {
     String fillings,flavour,topping,size;
     int imageflavor;
+    int quantity;
 
-    public Menu(String fillings, String flavour, String topping, String size,int imageflavor) {
+    public Menu() {
+    }
+
+    public Menu(String fillings, String flavour, String topping, String size, int imageflavor, int quantity) {
         this.fillings = fillings;
         this.flavour = flavour;
         this.topping = topping;
         this.size = size;
         this.imageflavor= imageflavor;
+        this.quantity = quantity;
     }
 
     public String getFillings() {
@@ -52,15 +57,25 @@ public class Menu {
         this.imageflavor = imageflavor;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public Menu(String flavour, int imageflavor) {
+
         this.flavour = flavour;
         this.imageflavor = imageflavor;
     }
 
-    public Menu(String fillings, String flavour, String topping, String size) {
+    public Menu(String fillings, String flavour, String topping, String size, int quantity) {
         this.fillings = fillings;
         this.flavour = flavour;
         this.topping = topping;
         this.size = size;
+        this.quantity = quantity;
     }
 }

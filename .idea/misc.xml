@@ -3,12 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Farhan/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/activity_about_us.xml" value="0.24909420289855072" />
-        <entry key="..\:/Users/Farhan/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/activity_contact_us.xml" value="0.24909420289855072" />
-        <entry key="..\:/Users/Farhan/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/activity_edit_profile.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/Farhan/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/Farhan/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/activity_view_profile.xml" value="0.1793478260869565" />
-        <entry key="..\:/Users/Farhan/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/order_fragment.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/drawable/button_bg.xml" value="0.290625" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/drawable/edittext_bg.xml" value="0.290625" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/drawable/ic_add.xml" value="0.290625" />
@@ -16,7 +10,7 @@
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.290625" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/drawable/ic_baseline_call_24.xml" value="0.290625" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/activity_about_us.xml" value="0.14375" />
-        <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/activity_check_out.xml" value="0.176" />
+        <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/activity_check_out.xml" value="0.264" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/activity_edit_profile.xml" value="0.223731884057971" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/activity_login.xml" value="0.223731884057971" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/activity_main.xml" value="0.14375" />
@@ -28,8 +22,10 @@
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/login_fragment.xml" value="0.14375" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/order_fragment.xml" value="0.223731884057971" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/order_history_row.xml" value="0.223731884057971" />
+        <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/orderhistory.xml" value="0.264" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/recyclerviewlayout.xml" value="0.1334853090172239" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/signup_fragment.xml" value="0.19655797101449277" />
+        <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/layout/test_recycler.xml" value="0.18206521739130435" />
         <entry key="..\:/Users/TUF/Documents/AndroidStudioProjects/TK2323/app/src/main/res/menu/main_menu.xml" value="0.264" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/drawable/button_bg.xml" value="0.1" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/drawable/edittext_bg.xml" value="0.1" />
@@ -44,7 +40,7 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_contact_us.xml" value="0.4" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_edit_profile.xml" value="0.536" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_login.xml" value="0.176" />
-        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_thank_you.xml" value="0.264" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_view_profile.xml" value="0.2640625" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/cart_row.xml" value="0.536" />
@@ -52,11 +48,9 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/flavor_view.xml" value="0.264" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/header.xml" value="0.264" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/login_fragment.xml" value="0.264" />
-        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/order_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/order_fragment.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/order_history_row.xml" value="0.4" />
-        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/recyclerviewlayout.xml" value="0.4" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/signup_fragment.xml" value="0.21388888888888888" />
-        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/test_recycler.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/menu/main_menu.xml" value="0.4" />
       </map>
     </option>
