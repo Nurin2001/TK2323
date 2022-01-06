@@ -114,7 +114,7 @@ public class CheckOut extends AppCompatActivity {
         toppingtv.setText(topping);
         sizetv.setText(size);
         qtytv.setText(""+qty);
-        pricetv.setText("RM" + price*qty);
+        pricetv.setText("RM" + price*qty + "0");
 
 
 

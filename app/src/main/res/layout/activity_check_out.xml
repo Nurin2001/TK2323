@@ -121,24 +121,25 @@
 
                         <ImageView
                             android:id="@+id/imgorder"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="89dp"
+                            android:layout_height="94dp"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="5dp "
+                            android:layout_marginTop="5dp"
                             android:background="@drawable/img_view"
-                            android:src="@drawable/ic_launcher_background"
+                            android:src="@drawable/ic_baseline_account_circle_24"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/yourordertv"
-                            app:layout_constraintVertical_bias="0.0" />
+                            app:layout_constraintVertical_bias="0.342" />
 
                         <TableLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="32dp"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="40dp"
                             android:padding="5dp"
                             app:layout_constraintStart_toEndOf="@id/imgorder"
-                            app:layout_constraintTop_toTopOf="@id/imgorder">
+                            app:layout_constraintTop_toTopOf="parent">
 
 
                             <TableRow
