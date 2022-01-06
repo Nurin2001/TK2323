@@ -44,7 +44,7 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_contact_us.xml" value="0.4" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_edit_profile.xml" value="0.536" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_login.xml" value="0.176" />
-        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_thank_you.xml" value="0.264" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_view_profile.xml" value="0.2640625" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/cart_row.xml" value="0.536" />
@@ -52,9 +52,11 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/flavor_view.xml" value="0.264" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/header.xml" value="0.264" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/login_fragment.xml" value="0.264" />
-        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/order_fragment.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/order_fragment.xml" value="0.2" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/order_history_row.xml" value="0.4" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/recyclerviewlayout.xml" value="0.4" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/signup_fragment.xml" value="0.21388888888888888" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/test_recycler.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/menu/main_menu.xml" value="0.4" />
       </map>
     </option>

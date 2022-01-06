@@ -5,8 +5,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
@@ -18,21 +16,21 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
-    Button Buttonbtn;
+    FloatingActionButton Buttonbtn;
     private FirebaseAuth firebaseAuth;
    // LinearLayoutManager linearLayoutManager;
     ViewPager viewPager;
     TabLayout tabLayout;
+    long backPressedTime;
+    Toast backtoast;
 
 
     @Override
@@ -41,20 +39,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         viewPager = findViewById(R.id.viewpagermain);
 
-
+        //Menu and Order history
         tabLayout=findViewById(R.id.tabLayoutmain);
-        //viewPager.setAdapter(recyclerView);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         tabLayout.addTab(tabLayout.newTab().setText("Menu"));
         tabLayout.addTab(tabLayout.newTab().setText("Order History"));
         setUpTablayout();
         setUpViewpager(viewPager);
+
+        //get instance of FirebaseAuth
         firebaseAuth = FirebaseAuth.getInstance();
 
-        Buttonbtn=findViewById(R.id.buttonbtn);
+        Buttonbtn=findViewById(R.id.orderBtn);
         viewPager=findViewById(R.id.viewpagermain);
 
-
+        //toolbar for main activity
         MaterialToolbar toolbar = findViewById(R.id.topbar);
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -64,16 +63,17 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
         Buttonbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                setupviewpager(viewPager);
+//                setupviewpager(viewPager);
+                OrderBottomSheetFragment bottomSheet = new OrderBottomSheetFragment();
+                bottomSheet.show(getSupportFragmentManager(), "TAG");
 
             }
         });
-
-
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -120,28 +120,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
 
-        //logoutbtn = findViewById(R.id.logoutbtn);
+    @Override
+    public void onBackPressed() {
 
-        /*logoutbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this, login.class));
-                finish();
-            }
-        });*/
-
+        if(backPressedTime+2000 > System.currentTimeMillis()) {
+            backtoast.cancel();
+            super.onBackPressed();
+            return;
+        }
+        else {
+            backtoast = Toast.makeText(MainActivity.this, "Press back again to exit", Toast.LENGTH_SHORT);
+            backtoast.show();
+        }
+        backPressedTime = System.currentTimeMillis();
 
     }
-    public void setupviewpager(ViewPager viewPager){
-                OrderAdapter adapter=new OrderAdapter(getSupportFragmentManager(),MainActivity.this);
-                adapter.addFrag(new OrderFragment(),"Order");
-                viewPager.setAdapter(adapter);
 
-
-
-    }
     @Override
     protected void onStart() {
         super.onStart();

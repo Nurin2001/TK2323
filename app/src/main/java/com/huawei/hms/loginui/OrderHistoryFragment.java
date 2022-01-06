@@ -25,8 +25,8 @@ public class OrderHistoryFragment extends Fragment {
         linearLayoutManager= new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
         List<Menu> allMenuInfor = getOrderDetail();
-        MenuAdapter menuAdapter = new MenuAdapter(allMenuInfor,getActivity());
-        recyclerView.setAdapter(menuAdapter);
+        MenuRecyclerViewAdapter menuRecyclerViewAdapter = new MenuRecyclerViewAdapter(allMenuInfor,getActivity());
+        recyclerView.setAdapter(menuRecyclerViewAdapter);
         return root;
 
     }

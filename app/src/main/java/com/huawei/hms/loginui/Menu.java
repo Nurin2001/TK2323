@@ -56,4 +56,11 @@ public class Menu {
         this.flavour = flavour;
         this.imageflavor = imageflavor;
     }
+
+    public Menu(String fillings, String flavour, String topping, String size) {
+        this.fillings = fillings;
+        this.flavour = flavour;
+        this.topping = topping;
+        this.size = size;
+    }
 }

@@ -33,23 +33,7 @@ public class editProfile extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(editProfile.this);
-        alert.setTitle("Back to View Profile").setMessage("Are you sure you want to go back without saving?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        onStop();
-                        Intent intent = new Intent(editProfile.this, viewProfile.class);
-                        startActivity(intent);
-                    }
-                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        alert.create().show();
-
+        alertMessage();
     }
 
     @Override
@@ -61,27 +45,9 @@ public class editProfile extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(editProfile.this, viewProfile.class));
-                AlertDialog.Builder alert = new AlertDialog.Builder(editProfile.this);
-                alert.setTitle("Back to View Profile").setMessage("Are you sure you want to go back without saving?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                onStop();
-                                Intent intent = new Intent(editProfile.this, viewProfile.class);
-                                startActivity(intent);
-                            }
-                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
-                alert.create().show();
+                alertMessage();
             }
         });
-
-
 
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
@@ -120,5 +86,24 @@ public class editProfile extends AppCompatActivity {
                         });
             }
         });
+    }
+    private void alertMessage() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(editProfile.this);
+        alert.setTitle("Back to View Profile").setMessage("Are you sure you want to go back without saving?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        onStop();
+                        Intent intent = new Intent(editProfile.this, viewProfile.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        alert.create().show();
     }
 }

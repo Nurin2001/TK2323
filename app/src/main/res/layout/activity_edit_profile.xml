@@ -17,7 +17,7 @@
             android:id="@+id/editprofiletoolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:title="Profile"
+            app:title="Edit Profile"
             app:titleTextColor="@color/not_so_white_for_txt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

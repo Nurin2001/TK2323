@@ -42,6 +42,7 @@ public class viewProfile extends AppCompatActivity {
             public void onClick(View view) {
                 onStop();
                 startActivity(new Intent(viewProfile.this, MainActivity.class));
+                finish();
             }
         });
 
