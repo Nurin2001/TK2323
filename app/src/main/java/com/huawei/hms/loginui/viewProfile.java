@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class viewProfile extends AppCompatActivity {
 
+    String TAG = "ViewProfile";
     Button editbtn;
     TextView nametv, contacttv, addrtv;
 
@@ -31,7 +33,6 @@ public class viewProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_profile);
-
         createThis();
     }
 
@@ -40,8 +41,9 @@ public class viewProfile extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onStop();
-                startActivity(new Intent(viewProfile.this, MainActivity.class));
+                //onStop();
+                //startActivity(new Intent(viewProfile.this, MainActivity.class));
+                onBackPressed();
                 finish();
             }
         });
@@ -82,7 +84,7 @@ public class viewProfile extends AppCompatActivity {
         editbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onPause();
+                //onPause();
                 Intent intent = new Intent(viewProfile.this, editProfile.class);
                 intent.putExtra("name", name);
                 intent.putExtra("contact", contact);
@@ -95,18 +97,43 @@ public class viewProfile extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        createThis();
+        //createThis();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        //startActivity(new Intent(this, MainActivity.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "oResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-    }
-
-    @Override
-    public void onBackPressed() {
-        onStop();
-        startActivity(new Intent(this, MainActivity.class));
+        Log.i(TAG, "onDestroy");
     }
 }

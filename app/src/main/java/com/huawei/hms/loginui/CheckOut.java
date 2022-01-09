@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,6 +25,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+
 public class CheckOut extends AppCompatActivity {
 
     TextView pricetv, filligstv, flavortv, toppingtv, sizetv, addrtv, qtytv;
@@ -31,15 +35,18 @@ public class CheckOut extends AppCompatActivity {
     RadioGroup radgroupDelivery, radgroupPayment;
     ImageView imageView;
 
+    boolean clicked;
     float price=0;
     int qty=0;
-    String filling="", flavor="", topping="", size="";
+    String filling="", flavor="", topping="", size="", TAG = "CheckOut";
 
     DatabaseReference dbref;
 
     @Override
     public void onBackPressed() {
-        alertMessage();
+
+        super.onBackPressed();
+
     }
 
     @Override
@@ -47,11 +54,12 @@ public class CheckOut extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_out);
 
+        clicked = false;
         MaterialToolbar toolbar = findViewById(R.id.checkouttoolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertMessage();
+                onBackPressed();
             }
         });
 
@@ -93,7 +101,7 @@ public class CheckOut extends AppCompatActivity {
                     }
                 });
 
-                Intent intent = getIntent();
+        Intent intent = getIntent();
         price = intent.getFloatExtra("total_price", 0);
         filling = intent.getStringExtra("fillings");
         flavor = intent.getStringExtra("flavor");
@@ -142,14 +150,21 @@ public class CheckOut extends AppCompatActivity {
 
                 }
                 else {
-                    Menu menu = new Menu(filling, flavor, topping, size,qty);
+                    Calendar calendar = Calendar.getInstance();
+                    String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+                    String shortDate = DateFormat.getDateInstance().format(calendar.getTime());
+
+                    Menu menu = new Menu(filling, flavor, topping, size, shortDate, qty);
                     dbref.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .child("OrderHistory").setValue(menu).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()) {
+                                Intent intent = new Intent(CheckOut.this, ThankYou.class);
+                                intent.putExtra("date", currentDate);
                                 Toast.makeText(CheckOut.this, "Order is saved.", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(CheckOut.this, ThankYou.class));
+                                startActivity(intent);
+                                finish();
                             }
                             else
                                 Toast.makeText(CheckOut.this, "There was a problem", Toast.LENGTH_SHORT).show();
@@ -165,10 +180,10 @@ public class CheckOut extends AppCompatActivity {
     private void radioGroup1(int radBtnId) {
         switch (radBtnId) {
             case R.id.jntradbtn:
-                pricetv.setText("RM" + ((price*qty)+5));
+                pricetv.setText("RM" + ((price*qty)+5) + "0");
                 break;
             case  R.id.poslajuradbtn:
-                pricetv.setText("RM" + ((price*qty)+6));
+                pricetv.setText("RM" + ((price*qty)+6) + "0");
                 break;
         }
     }
@@ -186,9 +201,6 @@ public class CheckOut extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        onStop();
-                        Intent intent = new Intent(CheckOut.this, MainActivity.class);
-                        startActivity(intent);
                         finish();
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -198,5 +210,40 @@ public class CheckOut extends AppCompatActivity {
             }
         });
         alert.create().show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart");
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "oResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
     }
 }

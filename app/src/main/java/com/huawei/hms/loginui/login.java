@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -12,7 +13,7 @@ public class login extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
 
-    float v = 0;
+    String TAG = "Login";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +30,6 @@ public class login extends AppCompatActivity {
         setUpTablayout();
         setUpViewpager(viewPager);
 
-        //viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-
-//        tabLayout.setTranslationY(300);
-//        tabLayout.setAlpha(v);
-//        tabLayout.animate().translationY(0).alpha(1).setDuration(1000).setStartDelay(100).start();
-
     }
 
     public void setUpViewpager(ViewPager viewpager) {
@@ -50,5 +44,39 @@ public class login extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "oResume");
+    }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart");
+    }
 }

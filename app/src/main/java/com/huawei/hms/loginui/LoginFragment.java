@@ -86,7 +86,8 @@ public class LoginFragment extends Fragment {
                                     Intent intent = new Intent(getActivity(), MainActivity.class);
                                     intent.putExtra("UID", firebaseAuth.getCurrentUser().getUid());
                                     startActivity(intent);
-                                    onDestroy();
+
+                                    getActivity().finish();
                                 }
                                 else {
                                     Toast.makeText(getActivity(), "Error! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

@@ -3,17 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="200dp"
     android:orientation="vertical"
-    android:background="@color/another_light_brown"
+    android:background="@drawable/header"
     android:gravity="bottom"
     >
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="3dp"
         android:text="ChocoJoyce"
-        android:textSize="24sp"
         android:textColor="@color/not_so_white_for_txt"
-        android:padding="10dp"/>
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/nameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/title"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="3dp"
+        android:padding="3dp"
+        android:fontFamily="sans-serif"
+        android:text="Name"
+        android:textColor="@color/not_so_white_for_txt" />
 
 
 </RelativeLayout>

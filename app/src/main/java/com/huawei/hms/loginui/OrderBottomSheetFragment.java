@@ -115,6 +115,7 @@ public class OrderBottomSheetFragment extends BottomSheetDialogFragment {
 
                else {
                    goToCheckOut(root);
+                   dismiss();
                }
 
            }
@@ -130,6 +131,7 @@ public class OrderBottomSheetFragment extends BottomSheetDialogFragment {
 
        Toast.makeText(root.getContext(), "Thank you for ordering: "+ quantity + " Jar",Toast.LENGTH_SHORT).show();
        startActivity(gotoCheckoutIntent);
+       getActivity().finish();
    }
 
 //fillings
@@ -137,7 +139,6 @@ public class OrderBottomSheetFragment extends BottomSheetDialogFragment {
         switch (radBtnId) {
             case R.id.minicrunchradbtn:
                 gotoCheckoutIntent.putExtra("fillings", "Mini Crunch");
-
                 price[0] = 7;
                 break;
             case  R.id.bubblericeradbtn:

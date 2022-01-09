@@ -5,14 +5,18 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.appbar.MaterialToolbar;
@@ -21,9 +25,15 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
+    String TAG = "MainActivity";
     FloatingActionButton Buttonbtn;
     private FirebaseAuth firebaseAuth;
    // LinearLayoutManager linearLayoutManager;
@@ -31,12 +41,13 @@ public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     long backPressedTime;
     Toast backtoast;
-
+    String orderDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.i(TAG, "onCreate");
         viewPager = findViewById(R.id.viewpagermain);
 
         //Menu and Order history
@@ -61,6 +72,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
+                DatabaseReference ref = FirebaseDatabase.getInstance("https://orderup-trio-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
+                ref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        TextView nametv = findViewById(R.id.nameTV);
+
+                        UserDetail user = snapshot.getValue(UserDetail.class);
+                        String name="";
+                        if(user != null) {
+                            name = user.name;
+                            nametv.setText("Welcome " + name);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
 
@@ -84,14 +114,17 @@ public class MainActivity extends AppCompatActivity {
                 switch (id) {
                     case  R.id.nav_profile:
                         startActivity(new Intent(MainActivity.this, viewProfile.class));
+                       // onStop();
                         Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
                         break;
                     case  R.id.nav_about:
                         startActivity(new Intent(MainActivity.this, AboutUs.class));
+                        //onStop();
                         Toast.makeText(MainActivity.this, "About", Toast.LENGTH_SHORT).show();
                         break;
                     case  R.id.nav_contact:
                         Toast.makeText(MainActivity.this, "Contact", Toast.LENGTH_SHORT).show();
+                        //onStop();
                         startActivity(new Intent(MainActivity.this, ContactUs.class));
                         break;
                     case  R.id.nav_logout:
@@ -103,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         FirebaseAuth.getInstance().signOut();
                                         startActivity(new Intent(MainActivity.this, login.class));
+                                        //onStop();
                                         finish();
                                     }
                                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -127,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(backPressedTime+2000 > System.currentTimeMillis()) {
             backtoast.cancel();
-            onDestroy();
+            //onDestroy();
             super.onBackPressed();
             return;
         }
@@ -142,11 +176,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        Log.i(TAG, "onStart");
 
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser!=null) {
             //ada user dah login
-
         }
         else {
             startActivity(new Intent(MainActivity.this, login.class));
@@ -154,6 +188,37 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "oResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
+    }
+
     public void setUpViewpager(ViewPager viewpager) {
         LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), MainActivity.this, tabLayout.getTabCount());
         adapter.addFrag(new MenuFragment(), "Menu");
@@ -166,5 +231,6 @@ public class MainActivity extends AppCompatActivity {
 
         tabLayout.setupWithViewPager(viewPager);
     }
+
 
 }

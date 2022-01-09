@@ -116,12 +116,14 @@ public class SignupFragment extends Fragment {
                                 }
                             });
 
-                            Intent intent = new Intent(getActivity(), MenuFragment.class);
+                            Intent intent = new Intent(getActivity(), MainActivity.class);
                             intent.putExtra("UID", firebaseAuth.getCurrentUser().getUid());
                             startActivity(intent);
+                            getActivity().finish();
                         }
                         else {
                             Toast.makeText(getContext(), "Fail to register." + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
 
                         }
 

@@ -1,5 +1,6 @@
 package com.huawei.hms.loginui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,12 +26,11 @@ import java.util.Calendar;
 import java.util.List;
 
 public class OrderHistoryFragment extends Fragment {
+
     DatabaseReference reference;
 
-    TextView tv_fillings,tv_flavour,tv_toppings,tv_size,tv_quantity;
+    TextView tv_fillings,tv_flavour,tv_toppings,tv_size,tv_quantity, tv_orderdate;
     ImageView imageView;
-
-
 
     @Nullable
     @Override
@@ -42,12 +42,14 @@ public class OrderHistoryFragment extends Fragment {
         tv_size = root.findViewById(R.id.tv_size);
         tv_quantity = root.findViewById(R.id.tv_quantity);
         imageView = root.findViewById(R.id.imageView);
+        tv_orderdate = root.findViewById(R.id.tv_orderdate);
+
         reference = FirebaseDatabase.getInstance("https://orderup-trio-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Users");
         reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("OrderHistory")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        String fillings = "",flavour = "" ,topping = "" ,size = "";
+                        String fillings = "",flavour = "" ,topping = "" ,size = "", date = "";
                         int quantity =0;
                         Menu menu = snapshot.getValue(Menu.class);
 
@@ -57,6 +59,8 @@ public class OrderHistoryFragment extends Fragment {
                             topping = menu.topping;
                             size = menu.size;
                             quantity = menu.quantity;
+                            date = menu.date;
+
                             if (flavour.equals("Chocolate"))
                                 imageView.setImageResource(R.drawable.chocolate_80);
                             if (flavour.equals("Strawberry"))
@@ -69,9 +73,9 @@ public class OrderHistoryFragment extends Fragment {
                             tv_toppings.setText("Toppings : " + topping);
                             tv_size.setText("Size : " + size);
                             tv_quantity.setText("Quantity : " + quantity);
+                            tv_orderdate.setText("Order Date: " + date);
 
                         }
-
 
                     }
 
@@ -81,28 +85,8 @@ public class OrderHistoryFragment extends Fragment {
                     }
                 });
 
-        Calendar calendar = Calendar.getInstance();
-        String currentDate = DateFormat.getDateInstance().format(calendar.getTime());
-
-        TextView tv_orderdate = root.findViewById(R.id.tv_orderdate);
-        tv_orderdate.setText("Order Date : " + currentDate);
-
-
-
         return root;
 
     }
-
-    private List<Menu> getOrderDetail(){
-
-
-        return null;
-    }
-
-
-
-
-
-
 
 }

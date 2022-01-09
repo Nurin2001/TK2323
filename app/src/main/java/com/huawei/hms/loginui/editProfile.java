@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,11 +30,19 @@ public class editProfile extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     DatabaseReference ref;
 
-    String name="", contact="", addr="", email="";
+
+    Boolean clicked;
+    String name="", contact="", addr="", email="", TAG = "ThankYou";
 
     @Override
     public void onBackPressed() {
-        alertMessage();
+
+        //alertMessage();
+        if(clicked == true)
+            super.onBackPressed();
+        else
+            alertMessage();
+
     }
 
     @Override
@@ -41,11 +50,13 @@ public class editProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        clicked = false;
+
         MaterialToolbar toolbar = findViewById(R.id.editprofiletoolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertMessage();
+                onBackPressed();
             }
         });
 
@@ -77,8 +88,10 @@ public class editProfile extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()) {
+                                    clicked = true;
                                     Toast.makeText(editProfile.this, "Data is updated.", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(editProfile.this, viewProfile.class));
+                                    //startActivity(new Intent(editProfile.this, viewProfile.class));
+                                    //onBackPressed();
                                 }
                                 else
                                     Toast.makeText(editProfile.this, "There was a problem", Toast.LENGTH_SHORT).show();
@@ -93,9 +106,8 @@ public class editProfile extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        onStop();
-                        Intent intent = new Intent(editProfile.this, viewProfile.class);
-                        startActivity(intent);
+                        //onStop();
+
                         finish();
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -105,5 +117,39 @@ public class editProfile extends AppCompatActivity {
             }
         });
         alert.create().show();
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart");
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i(TAG, "oResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(TAG, "onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
     }
 }

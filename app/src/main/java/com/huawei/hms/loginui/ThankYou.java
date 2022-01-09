@@ -1,6 +1,8 @@
 package com.huawei.hms.loginui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,17 +20,18 @@ public class ThankYou extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thank_you);
 
-        Calendar calendar = Calendar.getInstance();
-        String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        Intent intent = getIntent();
+        String orderDate = intent.getStringExtra("date");
 
-        TextView dateTV = findViewById(R.id.tqorderdatetv);
-        dateTV.setText("Order Date: " + currentDate);
+        TextView date = findViewById(R.id.tqorderdatetv);
+        date.setText(orderDate);
 
         Button backbtn = findViewById(R.id.itembtn);
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ThankYou.this, MainActivity.class));
+                startActivity(new Intent(ThankYou.this, MainActivity.class).putExtra("date_order", orderDate));
+                finish();
             }
         });
     }

@@ -1,20 +1,21 @@
 package com.huawei.hms.loginui;
 
 public class Menu {
-    String fillings,flavour,topping,size;
+    String fillings,flavour,topping,size, date;
     int imageflavor;
     int quantity;
 
     public Menu() {
     }
 
-    public Menu(String fillings, String flavour, String topping, String size, int imageflavor, int quantity) {
+    public Menu(String fillings, String flavour, String topping, String size, String date, int imageflavor, int quantity) {
         this.fillings = fillings;
         this.flavour = flavour;
         this.topping = topping;
         this.size = size;
         this.imageflavor= imageflavor;
         this.quantity = quantity;
+        this.date = date;
     }
 
     public String getFillings() {
@@ -71,11 +72,20 @@ public class Menu {
         this.imageflavor = imageflavor;
     }
 
-    public Menu(String fillings, String flavour, String topping, String size, int quantity) {
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public Menu(String fillings, String flavour, String topping, String size, String date, int quantity) {
         this.fillings = fillings;
         this.flavour = flavour;
         this.topping = topping;
         this.size = size;
         this.quantity = quantity;
+        this.date = date;
     }
 }
