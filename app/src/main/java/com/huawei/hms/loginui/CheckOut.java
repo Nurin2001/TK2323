@@ -26,11 +26,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class CheckOut extends AppCompatActivity {
 
-    TextView pricetv, filligstv, flavortv, toppingtv, sizetv, addrtv, qtytv;
+    TextView pricetv, filligstv, flavortv, toppingtv, sizetv, addrtv, qtytv,
+            priceFill, priceFlav, priceTop, priceSize;
     Button confirmbtn;
     RadioGroup radgroupDelivery, radgroupPayment;
     ImageView imageView;
@@ -39,14 +41,18 @@ public class CheckOut extends AppCompatActivity {
     float price=0;
     int qty=0;
     long maxid=0;
-    String filling="", flavor="", topping="", size="", TAG = "CheckOut";
+    String filling="", flavor="", topping="", size="", TAG = "CheckOut", finalPrice = "";
 
     DatabaseReference dbref;
 
     @Override
     public void onBackPressed() {
 
-        super.onBackPressed();
+        if(clicked)
+        startActivity(new Intent(CheckOut.this, MainActivity.class));
+
+        else
+            alertMessage();
 
     }
 
@@ -73,6 +79,11 @@ public class CheckOut extends AppCompatActivity {
         flavortv = findViewById(R.id.flavortv);
         sizetv = findViewById(R.id.sizetv);
         qtytv = findViewById(R.id.qtytv);
+        priceFill = findViewById(R.id.fillingsprice);
+        priceFlav = findViewById(R.id.flavourprice);
+        priceTop = findViewById(R.id.toppingprice);
+        priceSize = findViewById(R.id.sizeprice);
+
         imageView = findViewById(R.id.imgorder);
 
         confirmbtn = findViewById(R.id.confirmbtn);
@@ -129,20 +140,32 @@ public class CheckOut extends AppCompatActivity {
 
         pricetv = findViewById(R.id.totalpricetv);
 
-        if (flavor.equals("Chocolate"))
+        if (flavor.equals("Chocolate")) {
             imageView.setImageResource(R.drawable.chocolate_80);
-        if (flavor.equals("Strawberry"))
+            priceFlav.setText("RM1");
+        }
+        if (flavor.equals("Strawberry")) {
             imageView.setImageResource(R.drawable.strawberry_80);
-        if (flavor.equals("Butterscotch"))
+            priceFlav.setText("RM1");
+        }
+        if (flavor.equals("Butterscotch")) {
             imageView.setImageResource(R.drawable.butterscotch);
+            priceFlav.setText("RM2");
+        }
+        if (size.equals("300 g")) {
+            priceSize.setText("RM1");
+        }
+        if (size.equals("500 g")) {
+            priceSize.setText("RM2");
+        }
+        priceFill.setText("RM7");
+        priceTop.setText("RM2");
         filligstv.setText(filling);
         flavortv.setText(flavor);
         toppingtv.setText(topping);
         sizetv.setText(size);
         qtytv.setText(""+qty);
         pricetv.setText("RM" + price*qty + "0");
-
-
 
         radgroupDelivery.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -168,11 +191,14 @@ public class CheckOut extends AppCompatActivity {
 
                 }
                 else {
+                    clicked = true;
                     Calendar calendar = Calendar.getInstance();
-                    String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-                    String shortDate = DateFormat.getDateInstance().format(calendar.getTime());
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
 
-                    Menu menu = new Menu(filling, flavor, topping, size, shortDate, qty);
+                    String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+                    String shortDate = simpleDateFormat.format(calendar.getTime());
+
+                    Menu menu = new Menu(filling, flavor, topping, size, shortDate, qty, finalPrice);
                     dbref.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .child("OrderHistory").child(String.valueOf(maxid+1)).setValue(menu)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -200,9 +226,11 @@ public class CheckOut extends AppCompatActivity {
         switch (radBtnId) {
             case R.id.jntradbtn:
                 pricetv.setText("RM" + ((price*qty)+5) + "0");
+                finalPrice = "RM" + ((price*qty)+5) + "0";
                 break;
             case  R.id.poslajuradbtn:
                 pricetv.setText("RM" + ((price*qty)+6) + "0");
+                finalPrice = "RM" + ((price*qty)+6) + "0";
                 break;
         }
     }
@@ -220,6 +248,7 @@ public class CheckOut extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(CheckOut.this, MainActivity.class));
                         finish();
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {

@@ -66,7 +66,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/peach"
-                        android:paddingEnd="10dp">
+                        android:paddingEnd="10dp"
+                        android:paddingStart="0dp">
 
                         <TextView
                             android:id="@+id/addtitletv"
@@ -135,7 +136,7 @@
                         <TableLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="36dp"
+                            android:layout_marginStart="25dp"
                             android:layout_marginTop="40dp"
                             android:padding="5dp"
                             app:layout_constraintStart_toEndOf="@id/imgorder"
@@ -158,6 +159,13 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="10dp"
                                     android:text="fillings" />
+
+                                <TextView
+                                    android:id="@+id/fillingsprice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:text="RM" />
                             </TableRow>
 
                             <TableRow
@@ -176,6 +184,12 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="10dp"
                                     android:text="flavor" />
+                                <TextView
+                                    android:id="@+id/flavourprice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:text="RM" />
 
                             </TableRow>
 
@@ -195,6 +209,12 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="10dp"
                                     android:text="topping" />
+                                <TextView
+                                    android:id="@+id/toppingprice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:text="RM" />
                             </TableRow>
 
                             <TableRow
@@ -213,6 +233,12 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="10dp"
                                     android:text="size" />
+                                <TextView
+                                    android:id="@+id/sizeprice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:text="RM" />
 
                             </TableRow>
 

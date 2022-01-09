@@ -30,9 +30,15 @@ public class ThankYou extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ThankYou.this, MainActivity.class).putExtra("date_order", orderDate));
+                startActivity(new Intent(ThankYou.this, MainActivity.class));
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ThankYou.this, MainActivity.class));
+        finish();
     }
 }

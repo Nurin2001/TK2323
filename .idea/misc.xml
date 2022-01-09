@@ -38,7 +38,7 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/drawable/qty_view.xml" value="0.28125" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/drawable/view_bg.xml" value="0.1" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_about_us.xml" value="0.26510416666666664" />
-        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_check_out.xml" value="0.264" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_check_out.xml" value="0.4" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_contact_us.xml" value="0.4" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/activity_login.xml" value="0.176" />
@@ -52,7 +52,7 @@
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/login_fragment.xml" value="0.264" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/order_fragment.xml" value="0.26510416666666664" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/order_history_row.xml" value="0.4" />
-        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/orderhistory.xml" value="0.26510416666666664" />
+        <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/orderhistory.xml" value="0.4" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/recyclerview_order_history.xml" value="0.1" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/recyclerviewlayout.xml" value="0.19814814814814816" />
         <entry key="..\:/Users/acer/AndroidStudioProjects/LoginUI/app/src/main/res/layout/signup_fragment.xml" value="0.21388888888888888" />

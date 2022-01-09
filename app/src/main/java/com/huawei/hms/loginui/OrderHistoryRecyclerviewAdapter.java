@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.util.List;
 
 public class OrderHistoryRecyclerviewAdapter extends RecyclerView.Adapter<OrderHistoryRecyclerviewAdapter.OrderHistoryViewHolder> {
@@ -38,11 +40,12 @@ public class OrderHistoryRecyclerviewAdapter extends RecyclerView.Adapter<OrderH
         String flavour = MenuList.get(position).getFlavour();
 
         holder.orderdate.setText(MenuList.get(position).getDate());
-        holder.flavour.setText(flavour);
-        holder.fillings.setText(MenuList.get(position).getFillings());
-        holder.toppings.setText(MenuList.get(position).getTopping());
-        holder.size.setText(MenuList.get(position).getSize());
-        holder.quantity.setText("" + MenuList.get(position).getQuantity());
+        holder.flavour.setText("Flavour: " + flavour);
+        holder.fillings.setText("Fillings: " + MenuList.get(position).getFillings());
+        holder.toppings.setText("Toppings: " + MenuList.get(position).getTopping());
+        holder.size.setText("Size: " + MenuList.get(position).getSize());
+        holder.quantity.setText("Quantity: " + MenuList.get(position).getQuantity());
+        holder.finalprice.setText("Total Price: " + MenuList.get(position).getPrice());
 
         if (flavour.equals("Chocolate"))
             holder.imageview.setImageResource(R.drawable.chocolate_80);
@@ -61,7 +64,7 @@ public class OrderHistoryRecyclerviewAdapter extends RecyclerView.Adapter<OrderH
 
     public class OrderHistoryViewHolder extends RecyclerView.ViewHolder {
 
-        TextView orderdate, flavour, fillings, toppings, size, quantity;
+        TextView orderdate, flavour, fillings, toppings, size, quantity, finalprice;
         ImageView imageview;
 
         public OrderHistoryViewHolder(@NonNull View itemView) {
@@ -72,6 +75,7 @@ public class OrderHistoryRecyclerviewAdapter extends RecyclerView.Adapter<OrderH
             toppings = itemView.findViewById(R.id.tv_toppings);
             size = itemView.findViewById(R.id.tv_size);
             quantity = itemView.findViewById(R.id.tv_quantity);
+            finalprice = itemView.findViewById(R.id.finalprice);
 
             imageview = itemView.findViewById(R.id.imageView);
 
