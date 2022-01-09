@@ -1,20 +1,14 @@
 package com.huawei.hms.loginui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
 
@@ -33,7 +27,7 @@ public class MenuRecyclerViewAdapter extends RecyclerView.Adapter<MenuRecyclerVi
     @NonNull
     @Override
     public MenuRecyclerViewAdapter.MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View Menu_row = LayoutInflater.from(parent.getContext()).inflate(R.layout.test_recycler,null);
+        View Menu_row = LayoutInflater.from(parent.getContext()).inflate(R.layout.flavor_row,null);
 
         MenuViewHolder menuVH = new MenuViewHolder(Menu_row);
         return menuVH;
