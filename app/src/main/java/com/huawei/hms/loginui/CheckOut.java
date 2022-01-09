@@ -38,6 +38,7 @@ public class CheckOut extends AppCompatActivity {
     boolean clicked;
     float price=0;
     int qty=0;
+    long maxid=0;
     String filling="", flavor="", topping="", size="", TAG = "CheckOut";
 
     DatabaseReference dbref;
@@ -78,6 +79,8 @@ public class CheckOut extends AppCompatActivity {
 
         dbref = FirebaseDatabase.getInstance("https://orderup-trio-default-rtdb.asia-southeast1.firebasedatabase.app/")
                 .getReference("Users");
+
+        //to get user address
         dbref.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -101,6 +104,21 @@ public class CheckOut extends AppCompatActivity {
                     }
                 });
 
+        dbref.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("OrderHistory")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()) {
+                            maxid = (snapshot.getChildrenCount());
+                            Log.i("no of children", String.valueOf(maxid));
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
         Intent intent = getIntent();
         price = intent.getFloatExtra("total_price", 0);
         filling = intent.getStringExtra("fillings");
@@ -156,21 +174,22 @@ public class CheckOut extends AppCompatActivity {
 
                     Menu menu = new Menu(filling, flavor, topping, size, shortDate, qty);
                     dbref.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .child("OrderHistory").setValue(menu).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()) {
-                                Intent intent = new Intent(CheckOut.this, ThankYou.class);
-                                intent.putExtra("date", currentDate);
-                                Toast.makeText(CheckOut.this, "Order is saved.", Toast.LENGTH_SHORT).show();
-                                startActivity(intent);
-                                finish();
-                            }
-                            else
-                                Toast.makeText(CheckOut.this, "There was a problem", Toast.LENGTH_SHORT).show();
+                            .child("OrderHistory").child(String.valueOf(maxid+1)).setValue(menu)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()) {
+                                        Intent intent = new Intent(CheckOut.this, ThankYou.class);
+                                        intent.putExtra("date", currentDate);
+                                        Toast.makeText(CheckOut.this, "Order is saved.", Toast.LENGTH_SHORT).show();
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                    else
+                                        Toast.makeText(CheckOut.this, "There was a problem", Toast.LENGTH_SHORT).show();
 
-                        }
-                    });
+                                }
+                            });
                 }
 
             }

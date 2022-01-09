@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     String TAG = "MainActivity";
     FloatingActionButton Buttonbtn;
     private FirebaseAuth firebaseAuth;
-   // LinearLayoutManager linearLayoutManager;
+    // LinearLayoutManager linearLayoutManager;
     ViewPager viewPager;
     TabLayout tabLayout;
     long backPressedTime;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         Buttonbtn=findViewById(R.id.orderBtn);
-        viewPager=findViewById(R.id.viewpagermain);
+        //viewPager=findViewById(R.id.viewpagermain);
 
         //toolbar for main activity
         MaterialToolbar toolbar = findViewById(R.id.topbar);
@@ -97,8 +97,6 @@ public class MainActivity extends AppCompatActivity {
         Buttonbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                setupviewpager(viewPager);
                 OrderBottomSheetFragment bottomSheet = new OrderBottomSheetFragment();
                 bottomSheet.show(getSupportFragmentManager(), "TAG");
 
@@ -114,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (id) {
                     case  R.id.nav_profile:
                         startActivity(new Intent(MainActivity.this, viewProfile.class));
-                       // onStop();
+                        // onStop();
                         Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
                         break;
                     case  R.id.nav_about:
@@ -155,7 +153,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    public void setUpViewpager(ViewPager viewpager) {
+        LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), MainActivity.this, tabLayout.getTabCount());
+        adapter.addFrag(new MenuFragment(), "Menu");
+        adapter.addFrag(new OrderHistoryFragment(), "Order History");
 
+        viewpager.setAdapter(adapter);
+    }
+
+    public void setUpTablayout() {
+
+        tabLayout.setupWithViewPager(viewPager);
+    }
     @Override
     public void onBackPressed() {
 
@@ -219,18 +228,7 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG, "onDestroy");
     }
 
-    public void setUpViewpager(ViewPager viewpager) {
-        LoginAdapter adapter = new LoginAdapter(getSupportFragmentManager(), MainActivity.this, tabLayout.getTabCount());
-        adapter.addFrag(new MenuFragment(), "Menu");
-        adapter.addFrag(new OrderHistoryFragment(), "Order History");
 
-        viewpager.setAdapter(adapter);
-    }
-
-    public void setUpTablayout() {
-
-        tabLayout.setupWithViewPager(viewPager);
-    }
 
 
 }
